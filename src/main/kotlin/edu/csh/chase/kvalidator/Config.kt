@@ -17,4 +17,11 @@ object Config {
      */
     var errorOnBadInput = false
 
+    /**
+     * Sets all config options back to their default values
+     */
+    fun reset() {
+        extraFieldsCauseError = false
+        errorOnBadInput = false
+    }
 }
