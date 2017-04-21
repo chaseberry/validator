@@ -5,6 +5,7 @@ import edu.csh.chase.kvalidator.validators.CommonValidator
 import edu.csh.chase.kvalidator.validators.MapValidator
 
 class MapType : Type("Map") {
+
     override fun getValidator(field: Field, value: Any?): CommonValidator {
         return MapValidator(field.required, field.name, value)
     }
