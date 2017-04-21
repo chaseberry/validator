@@ -77,8 +77,8 @@ open class CommonValidator(val required: Boolean, val type: Type, val name: Stri
                 type = value.getType()?.name ?: "Unknown",
                 value = value,
                 status = when (hasProblems()) {
-                    true -> "ERROR"
-                    false -> "OK"
+                    true -> ValidatorStatus.ERROR
+                    false -> ValidatorStatus.OK
                 },
                 problems = problems
         )

@@ -1,12 +1,12 @@
 package edu.csh.chase.kvalidator
 
 import edu.csh.chase.kvalidator.validators.CommonValidator
+import edu.csh.chase.kvalidator.validators.ValidatorResult
 
-class Result(val extraFields: List<String>, val fields: List<CommonValidator>) {
+class Result(val extraFields: List<String>, val fields: List<ValidatorResult>) {
 
-    val issueCount: Int by lazy {
-        fields.sumBy { it.numProblems() } + (if (Config.extraFieldsCauseError) extraFields.size else 0)
+    val numProblems: Int by lazy {
+        fields.sumBy { it.problemCount() } + (if (Config.extraFieldsCauseError) extraFields.size else 0)
     }
 
-    val map = fields.associate { it.name to it.getResult() }
 }

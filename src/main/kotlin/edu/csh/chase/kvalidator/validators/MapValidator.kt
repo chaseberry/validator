@@ -8,12 +8,12 @@ import java.util.*
 
 open class MapValidator(required: Boolean, name: String, value: Any?) : CommonValidator(required, Types.map, name, value) {
 
-    private val results = ArrayList<CommonValidator>()
+    private val results = HashMap<String, ValidatorResult>()
 
     private val extraFields = ArrayList<String>()
 
     override fun numProblems(): Int {
-        return super.numProblems() + results.sumBy { it.numProblems() }
+        return super.numProblems() + results.values.sumBy { it.problemCount() }
     }
 
     override fun fields(vararg fields: Field) {
@@ -25,7 +25,7 @@ open class MapValidator(required: Boolean, name: String, value: Any?) : CommonVa
         val v = (value as Map<*, *>).mapKeys { it.key.toString() }
 
         fields.forEach {
-            results.add(it.checkAgainst(v[it.name]))
+            results[it.name] = it.checkAgainst(v[it.name])
         }
 
         val fieldNames = fields.map { it.name }
@@ -38,13 +38,13 @@ open class MapValidator(required: Boolean, name: String, value: Any?) : CommonVa
         return MapValidatorResult(
                 type = value.getType()?.name ?: "Unknown",
                 value = when (results.isNotEmpty()) {
-                    true -> results.associate { it.name to it }
+                    true -> results
                     false -> value
                 },
                 status = when {
-                    hasProblems() -> "ERROR"
-                    extraFields.isNotEmpty() && Config.extraFieldsCauseError -> "ERROR"
-                    else -> "OK"
+                    hasProblems() -> ValidatorStatus.ERROR
+                    Config.extraFieldsCauseError && extraFields.isNotEmpty() -> ValidatorStatus.ERROR
+                    else -> ValidatorStatus.OK
                 },
                 problems = problems,
                 extraFields = extraFields

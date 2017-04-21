@@ -7,13 +7,13 @@ import java.util.*
 
 open class ListValidator(required: Boolean, name: String, value: Any?) : CommonValidator(required, Types.list, name, value) {
 
-    private val results = ArrayList<CommonValidator>(lst.size)
+    private val results = ArrayList<ValidatorResult>(lst.size)
 
     private val lst
         get() = value as List<*>
 
     override fun numProblems(): Int {
-        return super.numProblems() + results.sumBy { it.numProblems() }
+        return super.numProblems() + results.sumBy { it.problemCount() }
     }
 
     override fun elements(type: Field) {
@@ -35,8 +35,8 @@ open class ListValidator(required: Boolean, name: String, value: Any?) : CommonV
                 },
                 problems = problems,
                 status = when {
-                    hasProblems() -> "ERROR"
-                    else -> "OK"
+                    hasProblems() -> ValidatorStatus.ERROR
+                    else -> ValidatorStatus.OK
                 }
         )
     }

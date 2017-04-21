@@ -2,13 +2,14 @@ package edu.csh.chase.kvalidator
 
 import edu.csh.chase.kvalidator.types.Type
 import edu.csh.chase.kvalidator.validators.CommonValidator
+import edu.csh.chase.kvalidator.validators.ValidatorResult
 import java.util.*
 
 fun Map<String, *>.validate(vararg fields: Field): Validation {
 
     val fieldKeys = fields.map { it.name }
 
-    val fieldResults = ArrayList<CommonValidator>()
+    val fieldResults = ArrayList<ValidatorResult>()
 
     for (it in fields) {
         val v = this[it.name]
@@ -23,7 +24,7 @@ fun Map<String, *>.validate(vararg fields: Field): Validation {
     val result = Result(extraKeys, fieldResults)
 
     return when {
-        result.issueCount == 0 -> Valid(result)
+        result.numProblems == 0 -> Valid(result)
         else -> Invalid(result)
     }
 }
