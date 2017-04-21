@@ -39,4 +39,18 @@ object Types {
         return simpleTypes.find { it.isType(value) } ?: types.find { it.isType(value) }
     }
 
+    fun register(type: Type) {
+        //Prevent re-registering a simple type
+        if (type in simpleTypes) {
+            return
+        }
+
+        //Prevent registering the same type twice
+        if (type in types) {
+            return
+        }
+
+        types.add(type)
+    }
+
 }
