@@ -1,7 +1,7 @@
-package edu.csh.chase.kvalidator.types
+package edu.csh.chase.validator.types
 
-import edu.csh.chase.kvalidator.Element
-import edu.csh.chase.kvalidator.validators.CommonValidator
+import edu.csh.chase.validator.Element
+import edu.csh.chase.validator.validators.CommonValidator
 
 class StringType : Type("String") {
 

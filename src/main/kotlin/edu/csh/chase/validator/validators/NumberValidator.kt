@@ -1,8 +1,8 @@
-package edu.csh.chase.kvalidator.validators
+package edu.csh.chase.validator.validators
 
-import edu.csh.chase.kvalidator.types.Type
-import edu.csh.chase.kvalidator.add
-import edu.csh.chase.kvalidator.inputError
+import edu.csh.chase.validator.types.Type
+import edu.csh.chase.validator.add
+import edu.csh.chase.validator.inputError
 
 open class NumberValidator(required: Boolean, type: Type, value: Any?) : CommonValidator(required, type, value) {
 

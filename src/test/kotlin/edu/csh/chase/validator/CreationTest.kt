@@ -1,9 +1,9 @@
-package edu.csh.chase.kvalidator
+package edu.csh.chase.validator
 
-import edu.csh.chase.kvalidator.validators.CommonValidator
-import edu.csh.chase.kvalidator.validators.ListValidator
-import edu.csh.chase.kvalidator.validators.MapValidator
-import edu.csh.chase.kvalidator.validators.NumberValidator
+import edu.csh.chase.validator.validators.CommonValidator
+import edu.csh.chase.validator.validators.ListValidator
+import edu.csh.chase.validator.validators.MapValidator
+import edu.csh.chase.validator.validators.NumberValidator
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

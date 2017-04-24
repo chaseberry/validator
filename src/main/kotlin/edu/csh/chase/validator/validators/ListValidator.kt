@@ -1,6 +1,6 @@
-package edu.csh.chase.kvalidator.validators
+package edu.csh.chase.validator.validators
 
-import edu.csh.chase.kvalidator.*
+import edu.csh.chase.validator.*
 import java.util.*
 
 open class ListValidator(required: Boolean, value: Any?) : CommonValidator(required, Types.list, value) {

@@ -1,7 +1,7 @@
-package edu.csh.chase.kvalidator.validators
+package edu.csh.chase.validator.validators
 
-import edu.csh.chase.kvalidator.*
-import edu.csh.chase.kvalidator.types.Type
+import edu.csh.chase.validator.*
+import edu.csh.chase.validator.types.Type
 import java.util.*
 
 open class CommonValidator(val required: Boolean, val type: Type, val value: Any?) {

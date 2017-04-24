@@ -1,6 +1,6 @@
-package edu.csh.chase.kvalidator
+package edu.csh.chase.validator
 
-import edu.csh.chase.kvalidator.Problem
+import edu.csh.chase.validator.Problem
 
 open class ValidatorResult(val type: String,
                            val value: Any?,

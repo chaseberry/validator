@@ -1,7 +1,7 @@
-package edu.csh.chase.kvalidator
+package edu.csh.chase.validator
 
 
-import edu.csh.chase.kvalidator.types.*
+import edu.csh.chase.validator.types.*
 import java.util.*
 
 object Types {

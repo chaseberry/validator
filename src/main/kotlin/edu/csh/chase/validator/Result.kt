@@ -1,4 +1,4 @@
-package edu.csh.chase.kvalidator
+package edu.csh.chase.validator
 
 class Result(val extraFields: List<String>, val fields: List<ValidatorResult>) {
 

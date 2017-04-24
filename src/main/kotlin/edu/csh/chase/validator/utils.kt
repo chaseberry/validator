@@ -1,8 +1,8 @@
-package edu.csh.chase.kvalidator
+package edu.csh.chase.validator
 
-import edu.csh.chase.kvalidator.types.Type
-import edu.csh.chase.kvalidator.validators.CommonValidator
-import edu.csh.chase.kvalidator.ValidatorResult
+import edu.csh.chase.validator.types.Type
+import edu.csh.chase.validator.validators.CommonValidator
+import edu.csh.chase.validator.ValidatorResult
 import java.util.*
 
 fun Map<String, *>.validate(vararg fields: Field): Result {
@@ -56,6 +56,6 @@ fun optional(type: Type, name: String, check: (CommonValidator.() -> Unit)? = nu
 
 fun inputError(msg: String) {
     if (Config.errorOnBadInput) {
-        throw edu.csh.chase.kvalidator.BadInputException(msg)
+        throw edu.csh.chase.validator.BadInputException(msg)
     }
 }

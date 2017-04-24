@@ -1,6 +1,6 @@
-package edu.csh.chase.kvalidator
+package edu.csh.chase.validator
 
-import edu.csh.chase.kvalidator.ValidatorStatus
+import edu.csh.chase.validator.ValidatorStatus
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
