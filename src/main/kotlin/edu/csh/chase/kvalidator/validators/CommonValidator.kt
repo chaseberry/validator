@@ -13,7 +13,7 @@ open class CommonValidator(val required: Boolean, val type: Type, val value: Any
             problems.add("null", "not null")
         }
 
-        if (!type.isType(value)) {
+        if (!type.isType(value) && !(required && this.value == null)) {
             problems.add("type", type.name)
         }
     }
