@@ -8,11 +8,11 @@ open class Element(val required: Boolean, val type: Type, private val check: ((C
 
     fun checkAgainst(value: Any?): ValidatorResult {
 
-        val result = type.getValidator(this, value)
+        val validator = type.getValidator(this, value)
 
-        check?.invoke(result)
+        check?.invoke(validator)
 
-        return result.getResult()
+        return validator.getResult()
     }
 
 }
