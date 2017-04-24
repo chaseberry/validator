@@ -61,7 +61,7 @@ open class CommonValidator(val required: Boolean, val type: Type, val name: Stri
 
     open fun lt(i: Any) {}
 
-    open fun fields(vararg fields: Field) {}
+    open fun fields(vararg fields: NamedField) {}
 
     open fun elements(type: Field) {}
 

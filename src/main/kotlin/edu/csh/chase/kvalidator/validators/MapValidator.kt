@@ -13,7 +13,7 @@ open class MapValidator(required: Boolean, name: String, value: Any?) : CommonVa
         return super.numProblems() + results.values.sumBy { it.problemCount() }
     }
 
-    override fun fields(vararg fields: Field) {
+    override fun fields(vararg fields: NamedField) {
         if (value == null) {
             return
         }
