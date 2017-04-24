@@ -5,6 +5,7 @@ import edu.csh.chase.kvalidator.validators.CommonValidator
 import edu.csh.chase.kvalidator.validators.ListValidator
 
 class ListType : Type("List") {
+
     override fun getValidator(element: Element, value: Any?): CommonValidator {
         return ListValidator(element.required, value)
     }

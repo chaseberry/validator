@@ -5,6 +5,7 @@ import edu.csh.chase.kvalidator.validators.CommonValidator
 import edu.csh.chase.kvalidator.validators.NumberValidator
 
 class DoubleType : Type("Double") {
+
     override fun getValidator(element: Element, value: Any?): CommonValidator {
         return NumberValidator(element.required, element.type, value)
     }
