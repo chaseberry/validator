@@ -1,8 +1,5 @@
 package edu.csh.chase.kvalidator
 
-import edu.csh.chase.kvalidator.validators.CommonValidator
-import edu.csh.chase.kvalidator.ValidatorResult
-
 class Result(val extraFields: List<String>, val fields: List<ValidatorResult>) {
 
     val status = when {

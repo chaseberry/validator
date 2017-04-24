@@ -32,6 +32,7 @@ open class CommonValidator(val required: Boolean, val type: Type, val value: Any
         if (required && value == null) {
             return
         }
+
         if (value !in elements) {
             problems.add(Problem("in", elements.toList()))
         }
@@ -41,6 +42,7 @@ open class CommonValidator(val required: Boolean, val type: Type, val value: Any
         if (required && value == null) {
             return
         }
+
         if (value in elements) {
             problems.add(Problem("nin", elements.toList()))
         }
