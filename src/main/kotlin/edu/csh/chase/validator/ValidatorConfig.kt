@@ -1,6 +1,6 @@
 package edu.csh.chase.validator
 
-object Config {
+object ValidatorConfig {
 
     /**
      * When true any map with extra fields will fail validation

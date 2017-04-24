@@ -39,7 +39,7 @@ open class MapValidator(required: Boolean, value: Any?) : CommonValidator(requir
                 },
                 status = when {
                     hasProblems() -> ValidatorStatus.ERROR
-                    Config.extraFieldsCauseError && extraFields.isNotEmpty() -> ValidatorStatus.ERROR
+                    ValidatorConfig.extraFieldsCauseError && extraFields.isNotEmpty() -> ValidatorStatus.ERROR
                     else -> ValidatorStatus.OK
                 },
                 problems = problems,

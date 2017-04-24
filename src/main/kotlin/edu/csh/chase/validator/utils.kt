@@ -55,7 +55,7 @@ fun optional(type: Type, name: String, check: (CommonValidator.() -> Unit)? = nu
 }
 
 fun inputError(msg: String) {
-    if (Config.errorOnBadInput) {
+    if (ValidatorConfig.errorOnBadInput) {
         throw edu.csh.chase.validator.BadInputException(msg)
     }
 }
