@@ -3,7 +3,7 @@ package edu.csh.chase.kvalidator.validators
 import edu.csh.chase.kvalidator.*
 import java.util.*
 
-open class MapValidator(required: Boolean, name: String, value: Any?) : CommonValidator(required, Types.map, name, value) {
+open class MapValidator(required: Boolean, value: Any?) : CommonValidator(required, Types.map, value) {
 
     private val results = HashMap<String, ValidatorResult>()
 
@@ -13,7 +13,7 @@ open class MapValidator(required: Boolean, name: String, value: Any?) : CommonVa
         return super.numProblems() + results.values.sumBy { it.problemCount() }
     }
 
-    override fun fields(vararg fields: NamedField) {
+    override fun fields(vararg fields: Field) {
         if (value == null) {
             return
         }

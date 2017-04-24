@@ -1,12 +1,12 @@
 package edu.csh.chase.kvalidator.types
 
-import edu.csh.chase.kvalidator.Field
+import edu.csh.chase.kvalidator.Element
 import edu.csh.chase.kvalidator.validators.CommonValidator
 import edu.csh.chase.kvalidator.validators.ListValidator
 
 class ListType : Type("List") {
-    override fun getValidator(field: Field, value: Any?): CommonValidator {
-        return ListValidator(field.required, field.name, value)
+    override fun getValidator(element: Element, value: Any?): CommonValidator {
+        return ListValidator(element.required, value)
     }
 
     override fun matchesType(other: Type): Boolean {

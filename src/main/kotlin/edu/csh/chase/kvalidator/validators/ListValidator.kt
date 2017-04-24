@@ -3,7 +3,7 @@ package edu.csh.chase.kvalidator.validators
 import edu.csh.chase.kvalidator.*
 import java.util.*
 
-open class ListValidator(required: Boolean, name: String, value: Any?) : CommonValidator(required, Types.list, name, value) {
+open class ListValidator(required: Boolean, value: Any?) : CommonValidator(required, Types.list, value) {
 
     private val results = ArrayList<ValidatorResult>(lst.size)
 
@@ -14,7 +14,7 @@ open class ListValidator(required: Boolean, name: String, value: Any?) : CommonV
         return super.numProblems() + results.sumBy { it.problemCount() }
     }
 
-    override fun elements(type: Field) {
+    override fun elements(type: Element) {
         if (value == null) {
             return
         }

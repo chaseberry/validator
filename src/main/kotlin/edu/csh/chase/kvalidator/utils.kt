@@ -5,7 +5,7 @@ import edu.csh.chase.kvalidator.validators.CommonValidator
 import edu.csh.chase.kvalidator.ValidatorResult
 import java.util.*
 
-fun Map<String, *>.validate(vararg fields: NamedField): Result {
+fun Map<String, *>.validate(vararg fields: Field): Result {
 
     val fieldKeys = fields.map { it.name }
 
@@ -26,7 +26,7 @@ fun Map<String, *>.validate(vararg fields: NamedField): Result {
     return result
 }
 
-fun Map<String, *>.isValid(vararg fields: NamedField): Boolean {
+fun Map<String, *>.isValid(vararg fields: Field): Boolean {
     return validate(*fields).status == ValidatorStatus.OK
 }
 
@@ -38,20 +38,20 @@ fun ArrayList<Problem>.add(test: String, expected: Any?) {
     add(Problem(test, expected))
 }
 
-fun required(type: Type, check: (CommonValidator.() -> Unit)? = null): Field {
-    return Field(true, type, check)
+fun required(type: Type, check: (CommonValidator.() -> Unit)? = null): Element {
+    return Element(true, type, check)
 }
 
-fun optional(type: Type, check: (CommonValidator.() -> Unit)? = null): Field {
-    return Field(false, type, check)
+fun optional(type: Type, check: (CommonValidator.() -> Unit)? = null): Element {
+    return Element(false, type, check)
 }
 
-fun required(type: Type, name: String, check: (CommonValidator.() -> Unit)? = null): NamedField {
-    return NamedField(true, type, name, check)
+fun required(type: Type, name: String, check: (CommonValidator.() -> Unit)? = null): Field {
+    return Field(true, type, name, check)
 }
 
-fun optional(type: Type, name: String, check: (CommonValidator.() -> Unit)? = null): NamedField {
-    return NamedField(false, type, name, check)
+fun optional(type: Type, name: String, check: (CommonValidator.() -> Unit)? = null): Field {
+    return Field(false, type, name, check)
 }
 
 fun inputError(msg: String) {

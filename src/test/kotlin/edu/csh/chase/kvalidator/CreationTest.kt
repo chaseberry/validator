@@ -14,7 +14,6 @@ class CreationTest {
 
         assertEquals(true, field.required)
         assertEquals(Types.int, field.type)
-        assertEquals("fieldName", field.name)
     }
 
     @Test fun createOptionalField() {
@@ -22,11 +21,10 @@ class CreationTest {
 
         assertEquals(false, field.required)
         assertEquals(Types.double, field.type)
-        assertEquals("fieldName", field.name)
     }
 
     @Test fun createNumberValidatorFromInt() {
-        val field = Field(true, Types.int, "fieldName", null)
+        val field = Element(true, Types.int, null)
 
         val validator = field.type.getValidator(field, 12)
 
@@ -35,7 +33,7 @@ class CreationTest {
     }
 
     @Test fun createNumberValidatorFromDouble() {
-        val field = Field(true, Types.double, "fieldName", null)
+        val field = Element(true, Types.double, null)
 
         val validator = field.type.getValidator(field, 4.5)
 
@@ -44,7 +42,7 @@ class CreationTest {
     }
 
     @Test fun createNumberValidatorFromLong() {
-        val field = Field(true, Types.long, "fieldName", null)
+        val field = Element(true, Types.long, null)
 
         val validator = field.type.getValidator(field, 145)
 
@@ -53,7 +51,7 @@ class CreationTest {
     }
 
     @Test fun createNumberValidatorFromFloat() {
-        val field = Field(true, Types.float, "fieldName", null)
+        val field = Element(true, Types.float, null)
 
         val validator = field.type.getValidator(field, 18.6452)
 
@@ -62,7 +60,7 @@ class CreationTest {
     }
 
     @Test fun createValidatorFromBoolean() {
-        val field = Field(true, Types.boolean, "fieldName", null)
+        val field = Element(true, Types.boolean, null)
 
         val validator = field.type.getValidator(field, false)
 
@@ -71,7 +69,7 @@ class CreationTest {
     }
 
     @Test fun createValidatorFromString() {
-        val field = Field(true, Types.string, "fieldName", null)
+        val field = Element(true, Types.string, null)
 
         val validator = field.type.getValidator(field, "testString")
 
@@ -80,7 +78,7 @@ class CreationTest {
     }
 
     @Test fun createMapValidator() {
-        val field = Field(true, Types.map, "fieldName", null)
+        val field = Element(true, Types.map, null)
 
         val validator = field.type.getValidator(field, mapOf<String, Any?>())
 
@@ -89,7 +87,7 @@ class CreationTest {
     }
 
     @Test fun createListValidator() {
-        val field = Field(true, Types.list, "fieldName", null)
+        val field = Element(true, Types.list, null)
 
         val validator = field.type.getValidator(field, emptyList<String>())
 

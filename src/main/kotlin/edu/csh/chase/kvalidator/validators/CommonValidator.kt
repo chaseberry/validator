@@ -4,7 +4,7 @@ import edu.csh.chase.kvalidator.*
 import edu.csh.chase.kvalidator.types.Type
 import java.util.*
 
-open class CommonValidator(val required: Boolean, val type: Type, val name: String, val value: Any?) {
+open class CommonValidator(val required: Boolean, val type: Type, val value: Any?) {
 
     protected val problems = ArrayList<Problem>()
 
@@ -61,9 +61,9 @@ open class CommonValidator(val required: Boolean, val type: Type, val name: Stri
 
     open fun lt(i: Any) {}
 
-    open fun fields(vararg fields: NamedField) {}
+    open fun fields(vararg fields: Field) {}
 
-    open fun elements(type: Field) {}
+    open fun elements(type: Element) {}
 
     fun hasProblems() = numProblems() != 0
 

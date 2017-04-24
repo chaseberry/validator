@@ -4,7 +4,7 @@ import edu.csh.chase.kvalidator.types.Type
 import edu.csh.chase.kvalidator.add
 import edu.csh.chase.kvalidator.inputError
 
-open class NumberValidator(required: Boolean, type: Type, name: String, value: Any?) : CommonValidator(required, type, name, value) {
+open class NumberValidator(required: Boolean, type: Type, value: Any?) : CommonValidator(required, type, value) {
 
     override fun gte(i: Any) {
         val comp = test("gte", i)

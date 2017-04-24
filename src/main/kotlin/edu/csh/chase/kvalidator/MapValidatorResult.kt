@@ -1,4 +1,4 @@
-package edu.csh.chase.kvalidator.validators
+package edu.csh.chase.kvalidator
 
 import edu.csh.chase.kvalidator.Problem
 import edu.csh.chase.kvalidator.ValidatorResult
