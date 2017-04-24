@@ -30,7 +30,6 @@ open class MapValidator(required: Boolean, name: String, value: Any?) : CommonVa
         extraFields.addAll(v.map { it.key }.filter { it !in fieldNames })
     }
 
-    //This assumes fields is not an empty list (IE Empty Object)
     override fun getResult(): ValidatorResult {
         return MapValidatorResult(
                 type = value.getType()?.name ?: "Unknown",

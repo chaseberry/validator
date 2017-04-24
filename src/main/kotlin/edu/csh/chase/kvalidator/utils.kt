@@ -5,7 +5,7 @@ import edu.csh.chase.kvalidator.validators.CommonValidator
 import edu.csh.chase.kvalidator.ValidatorResult
 import java.util.*
 
-fun Map<String, *>.validate(vararg fields: Field): Validation {
+fun Map<String, *>.validate(vararg fields: Field): Result {
 
     val fieldKeys = fields.map { it.name }
 
@@ -23,14 +23,11 @@ fun Map<String, *>.validate(vararg fields: Field): Validation {
 
     val result = Result(extraKeys, fieldResults)
 
-    return when {
-        result.numProblems == 0 -> Valid(result)
-        else -> Invalid(result)
-    }
+    return result
 }
 
 fun Map<String, *>.isValid(vararg fields: Field): Boolean {
-    return validate(*fields) is Valid
+    return validate(*fields).status == ValidatorStatus.OK
 }
 
 fun Any?.getType(): Type? {
