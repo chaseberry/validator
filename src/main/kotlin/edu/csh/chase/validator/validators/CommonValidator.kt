@@ -55,17 +55,29 @@ open class CommonValidator(val required: Boolean, val type: Type, val value: Any
         }
     }
 
-    open fun gte(i: Any) {}
+    open fun gte(i: Any) {
+        inputError("calling gte on incomparable types")
+    }
 
-    open fun lte(i: Any) {}
+    open fun lte(i: Any) {
+        inputError("calling lte on incomparable types")
+    }
 
-    open fun gt(i: Any) {}
+    open fun gt(i: Any) {
+        inputError("calling gt on incomparable types")
+    }
 
-    open fun lt(i: Any) {}
+    open fun lt(i: Any) {
+        inputError("calling lt on incomparable types")
+    }
 
-    open fun fields(vararg fields: Field) {}
+    open fun fields(vararg fields: Field) {
+        inputError("calling fields on incomparable types")
+    }
 
-    open fun elements(type: Element) {}
+    open fun elements(type: Element) {
+        inputError("calling elements on incomparable types")
+    }
 
     fun hasProblems() = numProblems() != 0
 
