@@ -1,4 +1,4 @@
-package edu.csh.chase.kvalidator.validators
+package edu.csh.chase.kvalidator
 
 enum class ValidatorStatus {
     OK, ERROR

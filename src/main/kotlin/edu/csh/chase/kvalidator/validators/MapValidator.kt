@@ -1,9 +1,6 @@
 package edu.csh.chase.kvalidator.validators
 
-import edu.csh.chase.kvalidator.Config
-import edu.csh.chase.kvalidator.Field
-import edu.csh.chase.kvalidator.Types
-import edu.csh.chase.kvalidator.getType
+import edu.csh.chase.kvalidator.*
 import java.util.*
 
 open class MapValidator(required: Boolean, name: String, value: Any?) : CommonValidator(required, Types.map, name, value) {

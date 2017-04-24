@@ -2,7 +2,7 @@ package edu.csh.chase.kvalidator
 
 import edu.csh.chase.kvalidator.types.Type
 import edu.csh.chase.kvalidator.validators.CommonValidator
-import edu.csh.chase.kvalidator.validators.ValidatorResult
+import edu.csh.chase.kvalidator.ValidatorResult
 import java.util.*
 
 fun Map<String, *>.validate(vararg fields: Field): Validation {

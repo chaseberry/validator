@@ -1,10 +1,7 @@
 package edu.csh.chase.kvalidator.validators
 
-import edu.csh.chase.kvalidator.Field
-import edu.csh.chase.kvalidator.Problem
+import edu.csh.chase.kvalidator.*
 import edu.csh.chase.kvalidator.types.Type
-import edu.csh.chase.kvalidator.add
-import edu.csh.chase.kvalidator.getType
 import java.util.*
 
 open class CommonValidator(val required: Boolean, val type: Type, val name: String, val value: Any?) {

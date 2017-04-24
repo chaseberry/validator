@@ -1,6 +1,8 @@
 package edu.csh.chase.kvalidator.validators
 
 import edu.csh.chase.kvalidator.Problem
+import edu.csh.chase.kvalidator.ValidatorResult
+import edu.csh.chase.kvalidator.ValidatorStatus
 
 class MapValidatorResult(type: String,
                          value: Any?,
