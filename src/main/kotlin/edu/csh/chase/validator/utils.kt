@@ -9,19 +9,15 @@ fun Map<String, *>.validate(vararg fields: Field): Result {
 
     val fieldKeys = fields.map { it.name }
 
-    val fieldResults = ArrayList<ValidatorResult>()
-
-    for (it in fields) {
+    val results = fields.associate {
         val v = this[it.name]
 
-        val result = it.checkAgainst(v)
-
-        fieldResults.add(result)
+        it.name to it.checkAgainst(v)
     }
 
     val extraKeys = ArrayList<String>(this.keys.filter { it !in fieldKeys })
 
-    val result = Result(extraKeys, fieldResults)
+    val result = Result(extraKeys, results)
 
     return result
 }
@@ -33,7 +29,7 @@ fun Map<String, *>.validate(vararg fields: Pair<String, Element>): Result {
 fun Map<String, *>.validate(map: Map<String, Element>): Result {
     val fieldKeys = map.keys
 
-    val results = map.map {
+    val results = map.mapValues {
         val v = this[it.key]
 
         it.value.checkAgainst(v)
