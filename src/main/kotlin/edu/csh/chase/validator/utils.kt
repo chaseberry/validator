@@ -26,6 +26,24 @@ fun Map<String, *>.validate(vararg fields: Field): Result {
     return result
 }
 
+fun Map<String, *>.validate(vararg fields: Pair<String, Element>): Result {
+    return this.validate(fields.associate { it.first to it.second })
+}
+
+fun Map<String, *>.validate(map: Map<String, Element>): Result {
+    val fieldKeys = map.keys
+
+    val results = map.map {
+        val v = this[it.key]
+
+        it.value.checkAgainst(v)
+    }
+
+    val extraKeys = ArrayList<String>(this.keys.filter { it !in fieldKeys })
+
+    return Result(extraKeys, results)
+}
+
 fun Map<String, *>.isValid(vararg fields: Field): Boolean {
     return validate(*fields).status == ValidatorStatus.OK
 }
