@@ -1,24 +1,61 @@
+def $versionNumber = '0.0.1'//Current uploaded version
+
 group 'edu.csh.chase'
-version '0.0.1'
+version $versionNumber
 
-buildscript {
-    ext.kotlin_version = '1.1.1'
-
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 apply plugin: 'kotlin'
 
 repositories {
     mavenCentral()
 }
 
+buildscript {
+    ext.kotlin_version = '1.1.1'
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+    }
+}
+
+
 dependencies {
     testCompile 'junit:junit:4.11'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+}
+
+bintray {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apiKey')
+    publications = ['validatorPublication']
+    pkg {
+        repo = 'maven'
+        name = 'Validator'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/chaseberry/validator.git'
+        version {
+            name = $versionNumber
+            desc = ''
+            released = new Date()
+        }
+    }
+}
+
+publishing {
+    publications {
+        validatorPublication(MavenPublication) {
+            from components.java
+            groupId 'edu.csh.chase'
+            artifactId 'validator'
+            version $versionNumber
+        }
+    }
 }

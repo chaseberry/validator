@@ -3,3 +3,4 @@ build
 .gradle
 gradle/
 src/main/kotlin/.DS_Store
+local.properties
