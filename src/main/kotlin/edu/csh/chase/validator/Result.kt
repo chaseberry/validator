@@ -5,6 +5,7 @@ class Result(val extraFields: List<String>, val fields: Map<String, ValidatorRes
     val status = when {
         fields.map { it.value.problemCount() != 0 }.reduce { acc, b -> acc || b } -> ValidatorStatus.ERROR
         ValidatorConfig.extraFieldsCauseError && extraFields.isNotEmpty() -> ValidatorStatus.ERROR
+        fields.values.find { it.status == ValidatorStatus.ERROR } != null -> ValidatorStatus.ERROR
         else -> ValidatorStatus.OK
     }
 
